@@ -1,10 +1,10 @@
-import 'package:chatapp/helper/helperfunctions.dart';
-import 'package:chatapp/helper/theme.dart';
-import 'package:chatapp/services/auth.dart';
-import 'package:chatapp/services/database.dart';
-import 'package:chatapp/views/chatrooms.dart';
-import 'package:chatapp/views/forgot_password.dart';
-import 'package:chatapp/widget/widget.dart';
+import 'package:e_grocery/helper/helperfunctions.dart';
+import 'package:e_grocery/helper/theme.dart';
+import 'package:e_grocery/services/auth.dart';
+import 'package:e_grocery/services/database.dart';
+import 'package:e_grocery/views/chatrooms.dart';
+import 'package:e_grocery/views/forgot_password.dart';
+import 'package:e_grocery/widget/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

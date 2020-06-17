@@ -1,5 +1,5 @@
-import 'package:chatapp/models/user.dart';
-import 'package:chatapp/views/chat.dart';
+import 'package:e_grocery/models/user.dart';
+import 'package:e_grocery/views/chat.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';

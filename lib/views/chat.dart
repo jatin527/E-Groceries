@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:chatapp/helper/constants.dart';
-import 'package:chatapp/services/database.dart';
-import 'package:chatapp/widget/widget.dart';
+import 'package:e_grocery/helper/constants.dart';
+import 'package:e_grocery/services/database.dart';
+import 'package:e_grocery/widget/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

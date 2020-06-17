@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.egro.groc
 
 import io.flutter.embedding.android.FlutterActivity
 

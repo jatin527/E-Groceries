@@ -1,11 +1,11 @@
-import 'package:chatapp/helper/authenticate.dart';
-import 'package:chatapp/helper/constants.dart';
-import 'package:chatapp/helper/helperfunctions.dart';
-import 'package:chatapp/helper/theme.dart';
-import 'package:chatapp/services/auth.dart';
-import 'package:chatapp/services/database.dart';
-import 'package:chatapp/views/chat.dart';
-import 'package:chatapp/views/search.dart';
+import 'package:e_grocery/helper/authenticate.dart';
+import 'package:e_grocery/helper/constants.dart';
+import 'package:e_grocery/helper/helperfunctions.dart';
+import 'package:e_grocery/helper/theme.dart';
+import 'package:e_grocery/services/auth.dart';
+import 'package:e_grocery/services/database.dart';
+import 'package:e_grocery/views/chat.dart';
+import 'package:e_grocery/views/search.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoom extends StatefulWidget {

@@ -1,6 +1,6 @@
 {
-    "name": "chatapp",
-    "short_name": "chatapp",
+    "name": "e_grocery",
+    "short_name": "e_grocery",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
