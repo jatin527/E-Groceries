@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "744760970721",
+    "firebase_url": "https://e-grocery-e218d.firebaseio.com",
+    "project_id": "e-grocery-e218d",
+    "storage_bucket": "e-grocery-e218d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744760970721:android:276d6189feda148bce16a0",
+        "android_client_info": {
+          "package_name": "com.egroceries.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744760970721-gv8bndjq7e0oejkf1fk1o01q65b9nbl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDWQB4BqkMovWrYveYGKVLDVJOd488As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744760970721-gv8bndjq7e0oejkf1fk1o01q65b9nbl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744760970721:android:a6d805554bbacbf0ce16a0",
+        "android_client_info": {
+          "package_name": "com.egroceries.gro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744760970721-gv8bndjq7e0oejkf1fk1o01q65b9nbl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDWQB4BqkMovWrYveYGKVLDVJOd488As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744760970721-gv8bndjq7e0oejkf1fk1o01q65b9nbl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
