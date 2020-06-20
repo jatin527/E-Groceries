@@ -30,7 +30,8 @@ class _ChatRoomState extends State<ChatRoom> {
                         .toString()
                         .replaceAll("_", "")
                         .replaceAll(Constants.myName, ""),
-                    chatRoomId: snapshot.data.documents[index].data["chatRoomId"],
+                    chatRoomId:
+                        snapshot.data.documents[index].data["chatRoomId"],
                   );
                 })
             : Container();
@@ -96,17 +97,18 @@ class ChatRoomsTile extends StatelessWidget {
   final String userName;
   final String chatRoomId;
 
-  ChatRoomsTile({this.userName,@required this.chatRoomId});
+  ChatRoomsTile({this.userName, @required this.chatRoomId});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Chat(
-            chatRoomId: chatRoomId,
-          )
-        ));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Chat(
+                      chatRoomId: chatRoomId,
+                    )));
       },
       child: Container(
         color: Colors.black26,
