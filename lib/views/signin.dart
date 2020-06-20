@@ -68,14 +68,11 @@ class _SignInState extends State<SignIn> {
               child: Center(child: CircularProgressIndicator()),
             )
           : Container(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
-                  Spacer(),
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
+              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 55.0),
+              child: Form(
+                key: formKey,
+                child: ListView(
+                  children: [
                         TextFormField(
                           validator: (val) {
                             return RegExp(
@@ -99,101 +96,104 @@ class _SignInState extends State<SignIn> {
                           controller: passwordEditingController,
                           decoration: textFieldInputDecoration("password"),
                         ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPassword()));
+                          },
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Text(
+                                "Forgot Password?",
+                                style: simpleTextStyle(),
+                              )),
+                        )
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
-                        },
-                        child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
-                            child: Text(
-                              "Forgot Password?",
-                              style: simpleTextStyle(),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        signIn();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: LinearGradient(
+                              colors: [
+                                const Color(0xff007EF4),
+                                const Color(0xff2A75BC)
+                              ],
                             )),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      signIn();
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: LinearGradient(
-                            colors: [
-                              const Color(0xff007EF4),
-                              const Color(0xff2A75BC)
-                            ],
-                          )),
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        "Sign In",
-                        style: biggerTextStyle(),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.white),
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      "Sign In with Google",
-                      style:
-                          TextStyle(fontSize: 17, color: CustomTheme.textColor),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have account? ",
-                        style: simpleTextStyle(),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          widget.toggleView();
-                        },
+                        width: MediaQuery.of(context).size.width,
                         child: Text(
-                          "Register now",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              decoration: TextDecoration.underline),
+                          "Sign In",
+                          style: biggerTextStyle(),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 50,
-                  )
-                ],
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        await authService.signInWithGoogle(context);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.white),
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          "Sign In with Google",
+                          style:
+                              TextStyle(fontSize: 17, color: CustomTheme.textColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have account? ",
+                          style: simpleTextStyle(),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            widget.toggleView();
+                          },
+                          child: Text(
+                            "Register now",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
               ),
             ),
     );
