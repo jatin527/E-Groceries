@@ -51,7 +51,7 @@ class _ChatRoomState extends State<ChatRoom> {
       setState(() {
         chatRooms = snapshots;
         print(
-            "we got the data + ${chatRooms.toString()} this is name  ${Constants.myName}");
+            "we got the data + ${chatRooms.toString()} This is ${Constants.myName}");
       });
     });
   }

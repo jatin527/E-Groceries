@@ -4,6 +4,7 @@ import 'package:e_grocery/services/auth.dart';
 import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/views/chatrooms.dart';
 import 'package:e_grocery/widget/widget.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -18,6 +19,8 @@ class _SignUpState extends State<SignUp> {
   TextEditingController emailEditingController = new TextEditingController();
   TextEditingController passwordEditingController = new TextEditingController();
   TextEditingController usernameEditingController = new TextEditingController();
+  TextEditingController mobileEditingController = new TextEditingController();
+  TextEditingController pincodeEditingController = new TextEditingController();
 
   AuthService authService = new AuthService();
   DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -25,7 +28,7 @@ class _SignUpState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
-  singUp() async {
+  signUp() async {
     if (formKey.currentState.validate()) {
       setState(() {
         isLoading = true;
@@ -55,6 +58,30 @@ class _SignUpState extends State<SignUp> {
       });
     }
   }
+  String validateMobile(String value) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.length == 0) {
+      return "Mobile Number is Required";
+    } else if(value.length != 10){
+      return "Mobile Number must 10 digits";
+    }else if (!regExp.hasMatch(value)) {
+      return "Mobile Number must be digits";
+    }
+    return null;
+  }
+  String validatepincode(String value) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.length == 0) {
+      return "Pin Code is Required";
+    } else if(value.length != 6){
+      return "Pin Code must 6 digits";
+    }else if (!regExp.hasMatch(value)) {
+      return "Pin Code must be digits";
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,37 +107,49 @@ class _SignUpState extends State<SignUp> {
                             ? "Enter Username 3+ characters"
                             : null;
                       },
-                      decoration: textFieldInputDecoration("username"),
+                      decoration: textFieldInputDecoration("Username"),
                     ),
                     TextFormField(
                       controller: emailEditingController,
-                      style: simpleTextStyle(),
+                      decoration: textFieldInputDecoration("E-mail"),
+                      keyboardType: TextInputType.emailAddress,
                       validator: (val) {
-                        return RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(val)
-                            ? null
-                            : "Enter correct email";
+                        if (!EmailValidator.validate(val)) {
+                          return 'Please enter a valid email';
+                        }
                       },
-                      decoration: textFieldInputDecoration("email"),
                     ),
                     TextFormField(
                       obscureText: true,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("password"),
+                      decoration: textFieldInputDecoration("Password"),
                       controller: passwordEditingController,
                       validator: (val) {
-                        return val.length < 6
-                            ? "Enter Password 6+ characters"
+                        return val.length < 8
+                            ? "Enter Password 8+ characters"
                             : null;
                       },
+                    ),
+                    TextFormField(
+                      controller: mobileEditingController,
+                      style: simpleTextStyle(),
+                      decoration: textFieldInputDecoration("Mobile Number"),
+                      keyboardType: TextInputType.phone,
+                      validator: validateMobile,
+                    ),
+                    TextFormField(
+                      controller: pincodeEditingController,
+                      style: simpleTextStyle(),
+                      decoration: textFieldInputDecoration("Pin Code"),
+                      keyboardType: TextInputType.phone,
+                      validator: validatepincode
                     ),
                     SizedBox(
                       height: 16,
                     ),
                     GestureDetector(
                       onTap: () {
-                        singUp();
+                        signUp();
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -134,7 +173,7 @@ class _SignUpState extends State<SignUp> {
                       height: 16,
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         authService.signInWithGoogle(context);
                       },
                       child: Container(
@@ -145,8 +184,8 @@ class _SignUpState extends State<SignUp> {
                         width: MediaQuery.of(context).size.width,
                         child: Text(
                           "Sign Up with Google",
-                          style:
-                              TextStyle(fontSize: 17, color: CustomTheme.textColor),
+                          style: TextStyle(
+                              fontSize: 17, color: CustomTheme.textColor),
                           textAlign: TextAlign.center,
                         ),
                       ),

@@ -37,7 +37,7 @@ class _SignInState extends State<SignIn> {
           .signInWithEmailAndPassword(
               emailEditingController.text, passwordEditingController.text)
           .then((result) async {
-        if (result != null)  {
+        if (result != null) {
           QuerySnapshot userInfoSnapshot =
               await DatabaseMethods().getUserInfo(emailEditingController.text);
 
@@ -73,29 +73,29 @@ class _SignInState extends State<SignIn> {
                 key: formKey,
                 child: ListView(
                   children: [
-                        TextFormField(
-                          validator: (val) {
-                            return RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(val)
-                                ? null
-                                : "Please Enter Correct Email";
-                          },
-                          controller: emailEditingController,
-                          style: simpleTextStyle(),
-                          decoration: textFieldInputDecoration("email"),
-                        ),
-                        TextFormField(
-                          obscureText: true,
-                          validator: (val) {
-                            return val.length > 6
-                                ? null
-                                : "Enter Password 6+ characters";
-                          },
-                          style: simpleTextStyle(),
-                          controller: passwordEditingController,
-                          decoration: textFieldInputDecoration("password"),
-                        ),
+                    TextFormField(
+                      validator: (val) {
+                        return RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(val)
+                            ? null
+                            : "Please Enter Correct Email";
+                      },
+                      controller: emailEditingController,
+                      style: simpleTextStyle(),
+                      decoration: textFieldInputDecoration("E-mail"),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      validator: (val) {
+                        return val.length > 6
+                            ? null
+                            : "Enter Password 6+ characters";
+                      },
+                      style: simpleTextStyle(),
+                      controller: passwordEditingController,
+                      decoration: textFieldInputDecoration("Password"),
+                    ),
                     SizedBox(
                       height: 16,
                     ),
@@ -159,8 +159,8 @@ class _SignInState extends State<SignIn> {
                         width: MediaQuery.of(context).size.width,
                         child: Text(
                           "Sign In with Google",
-                          style:
-                              TextStyle(fontSize: 17, color: CustomTheme.textColor),
+                          style: TextStyle(
+                              fontSize: 17, color: CustomTheme.textColor),
                           textAlign: TextAlign.center,
                         ),
                       ),
