@@ -126,7 +126,7 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarMain(context),
+      appBar: appBarMain(),
       body: isLoading
           ? Container(
               child: Center(

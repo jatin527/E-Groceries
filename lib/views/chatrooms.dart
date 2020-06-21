@@ -60,10 +60,8 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 40,
-        ),
+        title: const Text("E-Grocery",
+            style: TextStyle(fontFamily: 'DancingScript')),
         elevation: 0.0,
         centerTitle: false,
         actions: [
