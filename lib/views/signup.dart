@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_grocery/helper/helperfunctions.dart';
 import 'package:e_grocery/helper/theme.dart';
 import 'package:e_grocery/services/auth.dart';
@@ -36,15 +37,18 @@ class _SignUpState extends State<SignUp> {
 
       await authService
           .signUpWithEmailAndPassword(
-              emailEditingController.text, passwordEditingController.text)
+              emailEditingController.text, passwordEditingController.text,mobileEditingController.hashCode,pincodeEditingController.hashCode)
           .then((result) {
         if (result != null) {
-          Map<String, String> userDataMap = {
+          Map<String, dynamic> userDataMap = {
+            "userpin": pincodeEditingController.hashCode,
+            "userNumber": mobileEditingController.hashCode,
             "userName": usernameEditingController.text,
             "userEmail": emailEditingController.text
           };
 
           databaseMethods.addUserInfo(userDataMap);
+
 
           HelperFunctions.saveUserLoggedInSharedPreference(true);
           HelperFunctions.saveUserNameSharedPreference(
@@ -110,6 +114,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: textFieldInputDecoration("Username"),
                     ),
                     TextFormField(
+                      style: simpleTextStyle(),
                       controller: emailEditingController,
                       decoration: textFieldInputDecoration("E-mail"),
                       keyboardType: TextInputType.emailAddress,
