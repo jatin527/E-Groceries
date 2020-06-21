@@ -134,7 +134,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarMain(),
+      appBar: appBarMain(context),
       body: Container(
         child: Stack(
           children: [

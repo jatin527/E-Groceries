@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-Widget appBarMain() {
+Widget appBarMain(BuildContext context) {
   return AppBar(
-    title: Text("E-Grocery",
-    style: TextStyle(fontFamily:'DancingScript')
-    )
+    title: Image.asset(
+      "assets/images/logo.png",
+      height: 40,
+    ),
+    elevation: 0.0,
+    centerTitle: false,
   );
 }
 
@@ -23,5 +26,5 @@ TextStyle simpleTextStyle() {
 }
 
 TextStyle biggerTextStyle() {
-  return TextStyle(color: Colors.white, fontSize: 18);
+  return TextStyle(color: Colors.white, fontSize: 17);
 }

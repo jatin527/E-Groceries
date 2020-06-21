@@ -62,7 +62,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarMain(),
+      appBar: appBarMain(context),
       body: isLoading
           ? Container(
               child: Center(child: CircularProgressIndicator()),
