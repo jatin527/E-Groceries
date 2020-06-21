@@ -23,7 +23,7 @@ class AuthService {
     }
   }
 
-  Future signUpWithEmailAndPassword(String email, String password, int mobile, int pincode) async {
+  Future signUpWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);

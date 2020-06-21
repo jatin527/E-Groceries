@@ -37,12 +37,12 @@ class _SignUpState extends State<SignUp> {
 
       await authService
           .signUpWithEmailAndPassword(
-              emailEditingController.text, passwordEditingController.text,mobileEditingController.hashCode,pincodeEditingController.hashCode)
+              emailEditingController.text, passwordEditingController.text)
           .then((result) {
         if (result != null) {
           Map<String, dynamic> userDataMap = {
-            "userpin": pincodeEditingController.hashCode,
-            "userNumber": mobileEditingController.hashCode,
+            "userPin": pincodeEditingController.text,
+            "userNumber": mobileEditingController.text,
             "userName": usernameEditingController.text,
             "userEmail": emailEditingController.text
           };
@@ -68,9 +68,9 @@ class _SignUpState extends State<SignUp> {
     if (value.length == 0) {
       return "Mobile Number is Required";
     } else if(value.length != 10){
-      return "Mobile Number must 10 digits";
+      return "Mobile Number must be 10 digits";
     }else if (!regExp.hasMatch(value)) {
-      return "Mobile Number must be digits";
+      return "Mobile Number must be in digits";
     }
     return null;
   }
@@ -82,7 +82,7 @@ class _SignUpState extends State<SignUp> {
     } else if(value.length != 6){
       return "Pin Code must 6 digits";
     }else if (!regExp.hasMatch(value)) {
-      return "Pin Code must be digits";
+      return "Pin Code must be in digits";
     }
     return null;
   }
