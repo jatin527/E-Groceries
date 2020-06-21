@@ -114,12 +114,12 @@ class _SignUpState extends State<SignUp> {
                             ? "Enter Username 3+ characters"
                             : null;
                       },
-                      decoration: textFieldInputDecoration("Username or Shop Name"),
+                      decoration: textFieldInputDecoration("Username or Shop Name",iconic: Icons.person),
                     ),
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: emailEditingController,
-                      decoration: textFieldInputDecoration("E-mail"),
+                      decoration: textFieldInputDecoration("E-mail",iconic: Icons.email),
                       keyboardType: TextInputType.emailAddress,
                       validator: (val) {
                         if (!EmailValidator.validate(val)) {
@@ -130,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                     TextFormField(
                       obscureText: true,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Password"),
+                      decoration: textFieldInputDecoration("Password",iconic: Icons.lock),
                       controller: passwordEditingController,
                       validator: (val) {
                         return val.length < 8
@@ -141,14 +141,14 @@ class _SignUpState extends State<SignUp> {
                     TextFormField(
                       controller: mobileEditingController,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Mobile Number"),
+                      decoration: textFieldInputDecoration("Mobile Number",iconic: Icons.phone),
                       keyboardType: TextInputType.phone,
                       validator: validateMobile,
                     ),
                     TextFormField(
                         controller: pincodeEditingController,
                         style: simpleTextStyle(),
-                        decoration: textFieldInputDecoration("Pin Code"),
+                        decoration: textFieldInputDecoration("Pin Code",iconic: Icons.location_on),
                         keyboardType: TextInputType.phone,
                         validator: validatepincode),
                     SizedBox(
