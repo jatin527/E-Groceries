@@ -49,7 +49,6 @@ class _SignUpState extends State<SignUp> {
 
           databaseMethods.addUserInfo(userDataMap);
 
-
           HelperFunctions.saveUserLoggedInSharedPreference(true);
           HelperFunctions.saveUserNameSharedPreference(
               usernameEditingController.text);
@@ -62,31 +61,34 @@ class _SignUpState extends State<SignUp> {
       });
     }
   }
+
   String validateMobile(String value) {
     String patttern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(patttern);
     if (value.length == 0) {
       return "Mobile Number is Required";
-    } else if(value.length != 10){
+    } else if (value.length != 10) {
       return "Mobile Number must be 10 digits";
-    }else if (!regExp.hasMatch(value)) {
+    } else if (!regExp.hasMatch(value)) {
       return "Mobile Number must be in digits";
     }
     return null;
   }
+
   String validatepincode(String value) {
     String patttern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(patttern);
     if (value.length == 0) {
       return "Pin Code is Required";
-    } else if(value.length != 6){
+    } else if (value.length != 6) {
       return "Pin Code must 6 digits";
-    }else if (!regExp.hasMatch(value)) {
+    } else if (!regExp.hasMatch(value)) {
       return "Pin Code must be in digits";
     }
     return null;
   }
 
+  bool isShop = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,11 +145,59 @@ class _SignUpState extends State<SignUp> {
                       validator: validateMobile,
                     ),
                     TextFormField(
-                      controller: pincodeEditingController,
-                      style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Pin Code"),
-                      keyboardType: TextInputType.phone,
-                      validator: validatepincode
+                        controller: pincodeEditingController,
+                        style: simpleTextStyle(),
+                        decoration: textFieldInputDecoration("Pin Code"),
+                        keyboardType: TextInputType.phone,
+                        validator: validatepincode),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        new ClipRRect(
+                          clipBehavior: Clip.hardEdge,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: SizedBox(
+                            width: Checkbox.width,
+                            height: Checkbox.width,
+                            child: Container(
+                              decoration: new BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                ),
+                                borderRadius: new BorderRadius.circular(5),
+                              ),
+                              child: Theme(
+                                data: ThemeData(
+                                  unselectedWidgetColor: Colors.transparent,
+                                ),
+                                child: Checkbox(
+                                  value: isShop,
+                                  onChanged: (state) =>
+                                      setState(() => isShop = !isShop),
+                                  activeColor: const Color(0xff007EF4),
+                                  checkColor: Colors.black87,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.padded,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Wanted to be a Seller',
+                          style: TextStyle(
+                            color: const Color(0xff007EF4),
+                            fontSize: 20,
+                            fontFamily: 'SourceSansPro',
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 16,
@@ -227,6 +277,6 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
     );
-    ;
+
   }
 }

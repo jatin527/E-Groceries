@@ -96,6 +96,7 @@ class _SignInState extends State<SignIn> {
                       controller: passwordEditingController,
                       decoration: textFieldInputDecoration("Password"),
                     ),
+                    
                     SizedBox(
                       height: 16,
                     ),
