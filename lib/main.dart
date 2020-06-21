@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Color(0xff1F1F1F),
         accentColor: Color(0xff007EF4),
         fontFamily: "OverpassRegular",
+        
       ),
       home: userIsLoggedIn != null ?  userIsLoggedIn ? ChatRoom() : Authenticate()
           : Container(
