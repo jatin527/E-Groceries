@@ -8,10 +8,8 @@ Widget appBarMain() {
   );
 }
 
-InputDecoration textFieldInputDecoration(String hintText,{iconic}) {
+InputDecoration textFieldInputDecoration(String hintText) {
   return InputDecoration(
-      
-      prefixIcon: Icon(iconic,color: Colors.white60,),
       hintText: hintText,
       hintStyle: TextStyle(color: Colors.white54),
       focusedBorder:

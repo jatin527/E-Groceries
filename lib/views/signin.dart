@@ -6,7 +6,6 @@ import 'package:e_grocery/views/chatrooms.dart';
 import 'package:e_grocery/views/forgot_password.dart';
 import 'package:e_grocery/widget/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -75,27 +74,29 @@ class _SignInState extends State<SignIn> {
                 child: ListView(
                   children: [
                     TextFormField(
-                      style: simpleTextStyle(),
-                      controller: emailEditingController,
-                      decoration: textFieldInputDecoration("E-mail",iconic: Icons.email),
-                      keyboardType: TextInputType.emailAddress,
                       validator: (val) {
-                        if (!EmailValidator.validate(val)) {
-                          return 'Please enter a valid email';
-                        }
+                        return RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(val)
+                            ? null
+                            : "Please Enter Correct Email";
                       },
+                      controller: emailEditingController,
+                      style: simpleTextStyle(),
+                      decoration: textFieldInputDecoration("E-mail"),
                     ),
                     TextFormField(
                       obscureText: true,
-                      style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Password",iconic: Icons.lock),
-                      controller: passwordEditingController,
                       validator: (val) {
-                        return val.length < 8
-                            ? "Enter Password 8+ characters"
-                            : null;
+                        return val.length > 6
+                            ? null
+                            : "Enter Password 6+ characters";
                       },
+                      style: simpleTextStyle(),
+                      controller: passwordEditingController,
+                      decoration: textFieldInputDecoration("Password"),
                     ),
+                    
                     SizedBox(
                       height: 16,
                     ),
