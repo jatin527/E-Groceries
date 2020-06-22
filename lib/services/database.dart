@@ -18,13 +18,22 @@ class DatabaseMethods {
   }
 
   searchByName(String searchField) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if(!regExp.hasMatch(searchField)){
     return Firestore.instance
         .collection("users")
         .where('isShop', isEqualTo:"true")
         .where('userName', isEqualTo: searchField)
         .getDocuments();
+  }else{
+    return Firestore.instance
+        .collection("users")
+        .where('isShop', isEqualTo:"true")
+        .where('userPin', isEqualTo: searchField)
+        .getDocuments();
   }
-
+  }
   Future<bool> addChatRoom(chatRoom, chatRoomId) {
     Firestore.instance
         .collection("chatRoom")
