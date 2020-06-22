@@ -28,7 +28,8 @@ class _SignUpState extends State<SignUp> {
 
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
-
+  bool isShop = false;
+  
   signUp() async {
     if (formKey.currentState.validate()) {
       setState(() {
@@ -40,11 +41,12 @@ class _SignUpState extends State<SignUp> {
               emailEditingController.text, passwordEditingController.text)
           .then((result) {
         if (result != null) {
-          Map<String, dynamic> userDataMap = {
+          Map<String, Object> userDataMap = {
             "userPin": pincodeEditingController.text,
             "userNumber": mobileEditingController.text,
             "userName": usernameEditingController.text,
-            "userEmail": emailEditingController.text
+            "userEmail": emailEditingController.text,
+            "isShop": isShop.toString()
           };
 
           databaseMethods.addUserInfo(userDataMap);
@@ -88,7 +90,6 @@ class _SignUpState extends State<SignUp> {
     return null;
   }
 
-  bool isShop = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +114,7 @@ class _SignUpState extends State<SignUp> {
                             ? "Enter Username 3+ characters"
                             : null;
                       },
-                      decoration: textFieldInputDecoration("Username"),
+                      decoration: textFieldInputDecoration("Username or Shop Name"),
                     ),
                     TextFormField(
                       style: simpleTextStyle(),
@@ -171,12 +172,15 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: Theme(
                                 data: ThemeData(
-                                  unselectedWidgetColor: Colors.transparent,
+                                  unselectedWidgetColor: Colors.blue,
                                 ),
                                 child: Checkbox(
                                   value: isShop,
-                                  onChanged: (state) =>
-                                      setState(() => isShop = !isShop),
+                                  onChanged: (state) {
+                                    setState(() {
+                                      isShop = !isShop;
+                                    });
+                                  },
                                   activeColor: const Color(0xff007EF4),
                                   checkColor: Colors.black87,
                                   materialTapTargetSize:
@@ -190,13 +194,9 @@ class _SignUpState extends State<SignUp> {
                           width: 10,
                         ),
                         Text(
-                          'Wanted to be a Seller',
-                          style: TextStyle(
-                            color: const Color(0xff007EF4),
-                            fontSize: 20,
-                            fontFamily: 'SourceSansPro',
+                          'SignUp as Seller',
+                          style: biggerTextStyle(),
                           ),
-                        ),
                       ],
                     ),
                     SizedBox(
