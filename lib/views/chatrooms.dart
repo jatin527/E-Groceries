@@ -7,6 +7,7 @@ import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/views/chat.dart';
 import 'package:e_grocery/views/search.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatRoom extends StatefulWidget {
   @override
@@ -60,10 +61,8 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 40,
-        ),
+        title: Text("E-Groc",
+        style:GoogleFonts.piedra()),
         elevation: 0.0,
         centerTitle: false,
         actions: [

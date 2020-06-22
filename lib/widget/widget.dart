@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget appBarMain(BuildContext context) {
   return AppBar(
-    title: Image.asset(
-      "assets/images/logo.png",
-      height: 40,
-    ),
-    elevation: 0.0,
-    centerTitle: false,
+    title: (Text("E-Groc",
+    style:GoogleFonts.piedra(),
+    ))
+    
   );
 }
 
