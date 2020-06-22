@@ -44,8 +44,8 @@ class _SearchState extends State<Search> {
             itemBuilder: (context, index) {
               return userTile(
                 searchResultSnapshot.documents[index].data["userName"],
-                searchResultSnapshot.documents[index].data["userEmail"],
-                searchResultSnapshot.documents[index].data["userPin"],
+                searchResultSnapshot.documents[index].data["userAddress"],
+                searchResultSnapshot.documents[index].data["userNumber"],
               );
             })
         : Container();
@@ -72,7 +72,7 @@ class _SearchState extends State<Search> {
                 )));
   }
 
-  Widget userTile(String userName, String userEmail, String userPin) {
+  Widget userTile(String userName, String userNumber, String userAddress) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Row(
@@ -86,11 +86,11 @@ class _SearchState extends State<Search> {
                 style: TextStyle(color: Colors.white, fontSize: 14),
               ),
               Text(
-                userEmail,
+                userAddress,
                 style: TextStyle(color: Colors.white, fontSize: 14),
               ),
               Text(
-                userPin,
+                userNumber,
                 style: TextStyle(color: Colors.white, fontSize: 14),
               )
             ],

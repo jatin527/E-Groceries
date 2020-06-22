@@ -1,5 +1,4 @@
 import 'package:e_grocery/helper/helperfunctions.dart';
-import 'package:e_grocery/helper/theme.dart';
 import 'package:e_grocery/services/auth.dart';
 import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/views/chatrooms.dart';
@@ -21,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController usernameEditingController = new TextEditingController();
   TextEditingController mobileEditingController = new TextEditingController();
   TextEditingController pincodeEditingController = new TextEditingController();
+  TextEditingController useraddressEditingController = new TextEditingController();
 
   AuthService authService = new AuthService();
   DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -44,6 +44,7 @@ class _SignUpState extends State<SignUp> {
             "userPin": pincodeEditingController.text,
             "userNumber": mobileEditingController.text,
             "userName": usernameEditingController.text,
+            "userAddress":useraddressEditingController.text,
             "userEmail": emailEditingController.text,
             "isShop": isShop.toString()
           };
@@ -145,6 +146,16 @@ class _SignUpState extends State<SignUp> {
                       validator: validateMobile,
                     ),
                     TextFormField(
+                      style: simpleTextStyle(),
+                      controller: useraddressEditingController,
+                      validator: (val) {
+                        return val.isEmpty
+                            ? "Enter Address"
+                            : null;
+                      },
+                      decoration: textFieldInputDecoration("Address",iconic:Icons.home),
+                    ),
+                    TextFormField(
                         controller: pincodeEditingController,
                         style: simpleTextStyle(),
                         decoration: textFieldInputDecoration("Pin Code",iconic:Icons.location_on),
@@ -219,27 +230,6 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           "Sign Up",
                           style: biggerTextStyle(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        authService.signInWithGoogle(context);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white),
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          "Sign Up with Google",
-                          style: TextStyle(
-                              fontSize: 17, color: CustomTheme.textColor),
                           textAlign: TextAlign.center,
                         ),
                       ),

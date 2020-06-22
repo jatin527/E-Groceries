@@ -74,6 +74,7 @@ class _SignInState extends State<SignIn> {
                 key: formKey,
                 child: ListView(
                   children: [
+                    
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: emailEditingController,
@@ -141,27 +142,6 @@ class _SignInState extends State<SignIn> {
                         child: Text(
                           "Sign In",
                           style: biggerTextStyle(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    GestureDetector(
-                      onTap: () async {
-                        await authService.signInWithGoogle(context);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white),
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          "Sign In with Google",
-                          style: TextStyle(
-                              fontSize: 17, color: CustomTheme.textColor),
                           textAlign: TextAlign.center,
                         ),
                       ),
