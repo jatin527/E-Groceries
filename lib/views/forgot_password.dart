@@ -45,7 +45,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: useremailEditingController,
-                      validator: (val){
+                      validator: (val) {
                         if (!EmailValidator.validate(val)) {
                           return 'Please enter a valid email';
                         } else {
@@ -66,18 +66,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               Text(
                                 "Mail Sent. Please Check your inbox",
                                 style: simpleTextStyle(),
+                                textAlign: TextAlign.center,
                               )
                             ],
                           )
                         : new Container(),
                     GestureDetector(
                       onTap: () {
-                        
-                          forgetpass();
-                          setState(() {
-                            visible = true;
-                          });
-                        
+                        forgetpass();
+                        setState(() {
+                          visible = true;
+                        });
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -91,7 +90,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             )),
                         width: MediaQuery.of(context).size.width,
                         child: Text(
-                          "Send Password Reset Mail",
+                          "Reset Password",
                           style: biggerTextStyle(),
                           textAlign: TextAlign.center,
                         ),
