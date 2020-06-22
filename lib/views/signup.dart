@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_grocery/helper/helperfunctions.dart';
 import 'package:e_grocery/helper/theme.dart';
 import 'package:e_grocery/services/auth.dart';

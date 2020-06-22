@@ -1,5 +1,4 @@
 import 'package:e_grocery/helper/constants.dart';
-import 'package:e_grocery/models/user.dart';
 import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/views/chat.dart';
 import 'package:e_grocery/widget/widget.dart';
@@ -46,6 +45,7 @@ class _SearchState extends State<Search> {
               return userTile(
                 searchResultSnapshot.documents[index].data["userName"],
                 searchResultSnapshot.documents[index].data["userEmail"],
+                searchResultSnapshot.documents[index].data["userPin"],
               );
             })
         : Container();
@@ -72,7 +72,7 @@ class _SearchState extends State<Search> {
                 )));
   }
 
-  Widget userTile(String userName, String userEmail) {
+  Widget userTile(String userName, String userEmail, String userPin) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Row(
@@ -80,13 +80,18 @@ class _SearchState extends State<Search> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               Text(
                 userName,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 14),
               ),
               Text(
                 userEmail,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+              Text(
+                userPin,
+                style: TextStyle(color: Colors.white, fontSize: 14),
               )
             ],
           ),
