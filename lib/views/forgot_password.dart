@@ -22,30 +22,28 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  checkData(String email) async {
-    Firestore.instance
-        .collection("users")
-        .where('userEmail', isEqualTo: email)
-        .getDocuments()
-        .then((snapshot) {
-      emailsnap = snapshot;
-      print(emailsnap.documents.length);
-      if (emailsnap.documents.length != 0) {
-        setState(() {
-          visible = true;
-          visible1 = false;
-        });
-      } else {
-        setState(() {
-          visible1 = true;
-          visible = false;
-        });
-      }
-    });
-  }
 
-  forgetpass() async {
+  forgetpass(email) async {
     if (formKey.currentState.validate()) {
+      Firestore.instance
+          .collection("users")
+          .where('userEmail', isEqualTo: email)
+          .getDocuments()
+          .then((snapshot) {
+        emailsnap = snapshot;
+        print(emailsnap.documents.length);
+        if (emailsnap.documents.length != 0) {
+          setState(() {
+            visible = true;
+            visible1 = false;
+          });
+        } else {
+          setState(() {
+            visible1 = true;
+            visible = false;
+          });
+        }
+      });
       await authService.resetPass(useremailEditingController.text);
     }
   }
@@ -113,8 +111,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               GestureDetector(
                 onTap: () {
-                  checkData(useremailEditingController.text);
-                  forgetpass();
+                  forgetpass(useremailEditingController.text);
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 16),
