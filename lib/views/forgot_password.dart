@@ -27,6 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBarMain(context),
       body: isLoading
           ? Container(
@@ -62,6 +63,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             children: <Widget>[
                               Text(
                                 "Mail Sent. Please Check your inbox",
+                                textAlign: TextAlign.center,
                                 style: simpleTextStyle(),
                               )
                             ],
@@ -92,7 +94,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             )),
                         width: MediaQuery.of(context).size.width,
                         child: Text(
-                          "Send Password Reset Mail",
+                          "Reset Password",
                           style: biggerTextStyle(),
                           textAlign: TextAlign.center,
                         ),
