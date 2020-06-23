@@ -105,7 +105,7 @@ class ChatRoomsTile extends StatelessWidget {
           title: Text(
             userName,
             textAlign: TextAlign.start,
-            style: GoogleFonts.ebGaramond(fontSize: 20, color: Colors.black),
+            style: GoogleFonts.heebo(fontSize: 20, color: Colors.black),
           ),
           leading: Container(
             height: 30,
