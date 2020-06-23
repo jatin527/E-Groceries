@@ -135,86 +135,92 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarMain(context),
-      body: Stack(
-        children: [
-          chatMessages(),
-          Container(
-            alignment: Alignment.bottomCenter,
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-              height: 80,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              color: Colors.lightBlue[50],
-              child: Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: messageEditingController,
-                        textCapitalization: TextCapitalization.sentences,
-                        autocorrect: false,
-                        style: simpleTextStyle(),
-                        decoration: InputDecoration(
-                          prefix: Text(selectedItem),
-                          prefixStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
+      resizeToAvoidBottomInset: true,
+      body: InkWell(
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: Stack(
+          children: [
+            chatMessages(),
+            Container(
+              alignment: Alignment.bottomCenter,
+              width: MediaQuery.of(context).size.width,
+              child: Container(
+                height: 80,
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                color: Colors.lightBlue[50],
+                child: Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: messageEditingController,
+                          textCapitalization: TextCapitalization.sentences,
+                          autocorrect: false,
+                          style: simpleTextStyle(),
+                          decoration: InputDecoration(
+                            prefix: Text(selectedItem),
+                            prefixStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        addMessage();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [
-                                      const Color(0x36FFFFFF),
-                                      const Color(0x0FFFFFFF)
-                                    ],
-                                    begin: FractionalOffset.topLeft,
-                                    end: FractionalOffset.bottomRight),
-                                borderRadius: BorderRadius.circular(40)),
-                            child: Icon(
-                              Icons.send,
-                            ),
-                          ),
-                          Ink(
-                            decoration: const ShapeDecoration(
-                              color: Color(0x0FFFFFFF),
-                              shape: CircleBorder(),
-                            ),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.text_fields,
-                              ),
-                              color: Colors.black,
-                              iconSize: 20,
-                              onPressed: () {
-                                _onTextButtonPresed();
-                              },
-                            ),
-                          ),
-                        ],
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
-                  ],
+                      GestureDetector(
+                        onTap: () {
+                          addMessage();
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: [
+                                        const Color(0x36FFFFFF),
+                                        const Color(0x0FFFFFFF)
+                                      ],
+                                      begin: FractionalOffset.topLeft,
+                                      end: FractionalOffset.bottomRight),
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: Icon(
+                                Icons.send,
+                              ),
+                            ),
+                            Ink(
+                              decoration: const ShapeDecoration(
+                                color: Color(0x0FFFFFFF),
+                                shape: CircleBorder(),
+                              ),
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.text_fields,
+                                ),
+                                color: Colors.black,
+                                iconSize: 20,
+                                onPressed: () {
+                                  _onTextButtonPresed();
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
