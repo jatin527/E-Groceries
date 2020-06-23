@@ -61,6 +61,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           key: formKey,
           child: ListView(
             children: [
+              Image(
+                image: AssetImage('assets/images/main_logo.jpeg'),
+                height: 200,
+                width: 200,
+              ),
+              SizedBox(
+                height: 60,
+              ),
               TextFormField(
                 validator: (val) {
                   if (!EmailValidator.validate(val)) {
@@ -74,7 +82,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     iconic: Icons.mail),
               ),
               SizedBox(
-                height: 25,
+                height: 30,
               ),
               visible
                   ? new Row(
