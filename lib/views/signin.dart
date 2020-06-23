@@ -53,7 +53,7 @@ class _SignInState extends State<SignIn> {
         } else {
           setState(() {
             isLoading = false;
-            //show snackbar
+          
           });
         }
       });
@@ -63,6 +63,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBarMain(context),
       body: isLoading
           ? Container(
@@ -74,11 +75,17 @@ class _SignInState extends State<SignIn> {
                 key: formKey,
                 child: ListView(
                   children: [
-                    
+                    Image(
+                      image: AssetImage('assets/images/main_logo.jpeg'),
+                      height: 200,
+                      width: 200,
+                    ),
+                    SizedBox(height: 50,),
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: emailEditingController,
-                      decoration: textFieldInputDecoration("E-mail",iconic:Icons.mail),
+                      decoration: textFieldInputDecoration("E-mail",
+                          iconic: Icons.mail),
                       keyboardType: TextInputType.emailAddress,
                       validator: (val) {
                         if (!EmailValidator.validate(val)) {
@@ -86,10 +93,14 @@ class _SignInState extends State<SignIn> {
                         }
                       },
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     TextFormField(
                       obscureText: true,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Password",iconic:Icons.lock),
+                      decoration: textFieldInputDecoration("Password",
+                          iconic: Icons.lock),
                       controller: passwordEditingController,
                       validator: (val) {
                         return val.length < 8
@@ -97,9 +108,9 @@ class _SignInState extends State<SignIn> {
                             : null;
                       },
                     ),
-                    
+
                     SizedBox(
-                      height: 16,
+                      height: 15,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -147,7 +158,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                     SizedBox(
-                      height: 16,
+                      height: 30,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -163,7 +174,7 @@ class _SignInState extends State<SignIn> {
                           child: Text(
                             "Register now",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 16,
                                 decoration: TextDecoration.underline),
                           ),

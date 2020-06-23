@@ -20,7 +20,8 @@ class _SignUpState extends State<SignUp> {
   TextEditingController usernameEditingController = new TextEditingController();
   TextEditingController mobileEditingController = new TextEditingController();
   TextEditingController pincodeEditingController = new TextEditingController();
-  TextEditingController useraddressEditingController = new TextEditingController();
+  TextEditingController useraddressEditingController =
+      new TextEditingController();
 
   AuthService authService = new AuthService();
   DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -28,7 +29,7 @@ class _SignUpState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
   bool isShop = false;
-  
+
   signUp() async {
     if (formKey.currentState.validate()) {
       setState(() {
@@ -44,7 +45,7 @@ class _SignUpState extends State<SignUp> {
             "userPin": pincodeEditingController.text,
             "userNumber": mobileEditingController.text,
             "userName": usernameEditingController.text,
-            "userAddress":useraddressEditingController.text,
+            "userAddress": useraddressEditingController.text,
             "userEmail": emailEditingController.text,
             "isShop": isShop.toString()
           };
@@ -93,6 +94,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBarMain(context),
       body: isLoading
           ? Container(
@@ -114,12 +116,18 @@ class _SignUpState extends State<SignUp> {
                             ? "Enter Username 3+ characters"
                             : null;
                       },
-                      decoration: textFieldInputDecoration("Username or Shop Name",iconic:Icons.person),
+                      decoration: textFieldInputDecoration(
+                          "Username or Shop Name",
+                          iconic: Icons.person),
+                    ),
+                    SizedBox(
+                      height: 16,
                     ),
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: emailEditingController,
-                      decoration: textFieldInputDecoration("E-mail",iconic:Icons.mail),
+                      decoration: textFieldInputDecoration("E-mail",
+                          iconic: Icons.mail),
                       keyboardType: TextInputType.emailAddress,
                       validator: (val) {
                         if (!EmailValidator.validate(val)) {
@@ -127,10 +135,14 @@ class _SignUpState extends State<SignUp> {
                         }
                       },
                     ),
+                    SizedBox(
+                      height: 16,
+                    ),
                     TextFormField(
                       obscureText: true,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Password",iconic:Icons.lock),
+                      decoration: textFieldInputDecoration("Password",
+                          iconic: Icons.lock),
                       controller: passwordEditingController,
                       validator: (val) {
                         return val.length < 8
@@ -138,27 +150,37 @@ class _SignUpState extends State<SignUp> {
                             : null;
                       },
                     ),
+                    SizedBox(
+                      height: 16,
+                    ),
                     TextFormField(
                       controller: mobileEditingController,
                       style: simpleTextStyle(),
-                      decoration: textFieldInputDecoration("Mobile Number",iconic:Icons.phone),
+                      decoration: textFieldInputDecoration("Mobile Number",
+                          iconic: Icons.phone),
                       keyboardType: TextInputType.phone,
                       validator: validateMobile,
+                    ),
+                    SizedBox(
+                      height: 16,
                     ),
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: useraddressEditingController,
                       validator: (val) {
-                        return val.isEmpty
-                            ? "Enter Address"
-                            : null;
+                        return val.isEmpty ? "Enter Address" : null;
                       },
-                      decoration: textFieldInputDecoration("Address",iconic:Icons.home),
+                      decoration: textFieldInputDecoration("Address",
+                          iconic: Icons.home),
+                    ),
+                    SizedBox(
+                      height: 16,
                     ),
                     TextFormField(
                         controller: pincodeEditingController,
                         style: simpleTextStyle(),
-                        decoration: textFieldInputDecoration("Pin Code",iconic:Icons.location_on),
+                        decoration: textFieldInputDecoration("Pin Code",
+                            iconic: Icons.location_on),
                         keyboardType: TextInputType.phone,
                         validator: validatepincode),
                     SizedBox(
@@ -205,8 +227,12 @@ class _SignUpState extends State<SignUp> {
                         ),
                         Text(
                           'SignUp as Seller',
-                          style: biggerTextStyle(),
+                          //style: biggerTextStyle(),
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black,
                           ),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -251,7 +277,7 @@ class _SignUpState extends State<SignUp> {
                           child: Text(
                             "SignIn now",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 16,
                                 decoration: TextDecoration.underline),
                           ),
@@ -266,6 +292,5 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
     );
-
   }
 }

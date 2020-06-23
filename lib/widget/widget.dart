@@ -3,29 +3,30 @@ import 'package:google_fonts/google_fonts.dart';
 
 Widget appBarMain(BuildContext context) {
   return AppBar(
-    title: (Text("E-Groc",
-    style:GoogleFonts.piedra(),
-    ))
-    
+    title: (Text(
+      "E-Groc",
+      style: GoogleFonts.piedra(),
+    )),
   );
 }
 
 InputDecoration textFieldInputDecoration(String hintText, {iconic}) {
   return InputDecoration(
-      prefixIcon: Icon(
-        iconic,
-        color: Colors.white60,
-      ),
-      hintText: hintText,
-      hintStyle: TextStyle(color: Colors.white54),
-      focusedBorder:
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-      enabledBorder:
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)));
+    prefixIcon: Icon(
+      iconic,
+      color: Colors.black,
+    ),
+    border: new OutlineInputBorder(
+      borderRadius: new BorderRadius.circular(25.0),
+      borderSide: new BorderSide(),
+    ),
+    hintText: hintText,
+    hintStyle: TextStyle(color: Colors.black),
+  );
 }
 
 TextStyle simpleTextStyle() {
-  return TextStyle(color: Colors.white, fontSize: 16);
+  return TextStyle(color: Colors.black, fontSize: 16);
 }
 
 TextStyle biggerTextStyle() {
