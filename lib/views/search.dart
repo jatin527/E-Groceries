@@ -3,6 +3,7 @@ import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/views/chat.dart';
 import 'package:e_grocery/widget/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
@@ -83,15 +84,16 @@ class _SearchState extends State<Search> {
               
               Text(
                 userName,
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: GoogleFonts.heebo(fontSize: 14, color: Colors.black),
+
               ),
               Text(
                 userAddress,
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: GoogleFonts.heebo(fontSize: 14, color: Colors.black),
               ),
               Text(
                 userNumber,
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: GoogleFonts.heebo(fontSize: 14, color: Colors.black),
               )
             ],
           ),
@@ -143,7 +145,7 @@ class _SearchState extends State<Search> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    color: Color(0x54FFFFFF),
+                    color: Colors.grey[350],
                     child: Row(
                       children: [
                         Expanded(
@@ -153,7 +155,7 @@ class _SearchState extends State<Search> {
                             decoration: InputDecoration(
                                 hintText: "Search Shop Name or Pin Code",
                                 hintStyle: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black54,
                                   fontSize: 16,
                                 ),
                                 border: InputBorder.none),
@@ -169,8 +171,8 @@ class _SearchState extends State<Search> {
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       colors: [
-                                        const Color(0x36FFFFFF),
-                                        const Color(0x0FFFFFFF)
+                                        Colors.blue,
+                                        Colors.blue[300]
                                       ],
                                       begin: FractionalOffset.topLeft,
                                       end: FractionalOffset.bottomRight),
