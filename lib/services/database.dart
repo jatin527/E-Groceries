@@ -20,20 +20,21 @@ class DatabaseMethods {
   searchByName(String searchField) {
     String patttern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(patttern);
-    if(!regExp.hasMatch(searchField)){
-    return Firestore.instance
-        .collection("users")
-        .where('isShop', isEqualTo:"true")
-        .where('userName', isEqualTo: searchField)
-        .getDocuments();
-  }else{
-    return Firestore.instance
-        .collection("users")
-        .where('isShop', isEqualTo:"true")
-        .where('userPin', isEqualTo: searchField)
-        .getDocuments();
+    if (!regExp.hasMatch(searchField)) {
+      return Firestore.instance
+          .collection("users")
+          .where('isShop', isEqualTo: "true")
+          .where('userName', isEqualTo: searchField)
+          .getDocuments();
+    } else {
+      return Firestore.instance
+          .collection("users")
+          .where('isShop', isEqualTo: "true")
+          .where('userPin', isEqualTo: searchField)
+          .getDocuments();
+    }
   }
-  }
+
   Future<bool> addChatRoom(chatRoom, chatRoomId) {
     Firestore.instance
         .collection("chatRoom")
@@ -44,7 +45,7 @@ class DatabaseMethods {
     });
   }
 
-  getChats(String chatRoomId) async{
+  getChats(String chatRoomId) async {
     return Firestore.instance
         .collection("chatRoom")
         .document(chatRoomId)
@@ -53,14 +54,14 @@ class DatabaseMethods {
         .snapshots();
   }
 
-
-  Future<void> addMessage(String chatRoomId, chatMessageData){
-
-    Firestore.instance.collection("chatRoom")
+  Future<void> addMessage(String chatRoomId, chatMessageData) {
+    Firestore.instance
+        .collection("chatRoom")
         .document(chatRoomId)
         .collection("chats")
-        .add(chatMessageData).catchError((e){
-          print(e.toString());
+        .add(chatMessageData)
+        .catchError((e) {
+      print(e.toString());
     });
   }
 
@@ -70,5 +71,4 @@ class DatabaseMethods {
         .where('users', arrayContains: itIsMyName)
         .snapshots();
   }
-
 }
