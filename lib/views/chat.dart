@@ -135,88 +135,86 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarMain(context),
-      body: Container(
-        child: Stack(
-          children: [
-            chatMessages(),
-            Container(
-              alignment: Alignment.bottomCenter,
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                color: Color(0x54FFFFFF),
-                child: Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: messageEditingController,
-                          textCapitalization: TextCapitalization.sentences,
-                          autocorrect: false,
-                          style: simpleTextStyle(),
-                          decoration: InputDecoration(
-                              prefix: Text(selectedItem),
-                              prefixStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                              border: InputBorder.none),
+      body: Stack(
+        children: [
+          chatMessages(),
+          Container(
+            alignment: Alignment.bottomCenter,
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              height: 80,
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              color: Colors.lightBlue[50],
+              child: Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: messageEditingController,
+                        textCapitalization: TextCapitalization.sentences,
+                        autocorrect: false,
+                        style: simpleTextStyle(),
+                        decoration: InputDecoration(
+                          prefix: Text(selectedItem),
+                          prefixStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(25.0),
+                            borderSide: new BorderSide(),
+                          ),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          addMessage();
-                        },
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      colors: [
-                                        const Color(0x36FFFFFF),
-                                        const Color(0x0FFFFFFF)
-                                      ],
-                                      begin: FractionalOffset.topLeft,
-                                      end: FractionalOffset.bottomRight),
-                                  borderRadius: BorderRadius.circular(40)),
-                              padding: EdgeInsets.all(12),
-                              child: Image.asset(
-                                "assets/images/send.png",
-                                height: 25,
-                                width: 25,
-                              ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        addMessage();
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [
+                                      const Color(0x36FFFFFF),
+                                      const Color(0x0FFFFFFF)
+                                    ],
+                                    begin: FractionalOffset.topLeft,
+                                    end: FractionalOffset.bottomRight),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Icon(
+                              Icons.send,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Ink(
-                                decoration: const ShapeDecoration(
-                                  color: Color(0x0FFFFFFF),
-                                  shape: CircleBorder(),
-                                ),
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.text_fields,
-                                  ),
-                                  color: Colors.white,
-                                  iconSize: 20,
-                                  onPressed: () {
-                                    _onTextButtonPresed();
-                                  },
-                                ),
-                              ),
+                          ),
+                          Ink(
+                            decoration: const ShapeDecoration(
+                              color: Color(0x0FFFFFFF),
+                              shape: CircleBorder(),
                             ),
-                          ],
-                        ),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.text_fields,
+                              ),
+                              color: Colors.black,
+                              iconSize: 20,
+                              onPressed: () {
+                                _onTextButtonPresed();
+                              },
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -267,4 +265,3 @@ class MessageTile extends StatelessWidget {
     );
   }
 }
-
