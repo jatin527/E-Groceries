@@ -99,47 +99,46 @@ class ChatRoomsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
+    return Column(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+            userName,
+            textAlign: TextAlign.start,
+            style: GoogleFonts.ebGaramond(fontSize: 20, color: Colors.black),
+          ),
+          leading: Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              color: CustomTheme.colorAccent,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Text(
+              userName.substring(0, 1).toUpperCase(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Source Sans Pro',
+              ),
+            ),
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
                 builder: (context) => Chat(
-                      chatRoomId: chatRoomId,
-                    )));
-      },
-      child: Container(
-        color: Colors.black26,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-        child: Row(
-          children: [
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: CustomTheme.colorAccent,
-                  borderRadius: BorderRadius.circular(30)),
-              child: Text(userName.substring(0, 1),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'OverpassRegular',
-                      fontWeight: FontWeight.w300)),
-            ),
-            SizedBox(
-              width: 12,
-            ),
-            Text(userName,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'OverpassRegular',
-                    fontWeight: FontWeight.w300))
-          ],
+                  chatRoomId: chatRoomId,
+                ),
+              ),
+            );
+          },
         ),
-      ),
+        Divider(
+          thickness: 2,
+        ),
+      ],
     );
   }
 }
