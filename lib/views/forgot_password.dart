@@ -19,12 +19,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   forgetpass() async {
-    if (formKey.currentState.validate()) {
-      setState(() {
-        isLoading = true;
-      });
+    
       await authService.resetPass(useremailEditingController.text);
-    }
+    
   }
 
   @override
@@ -70,6 +67,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             ],
                           )
                         : new Container(),
+                        
+                    SizedBox(
+                      height: 25,
+                    ),
                     GestureDetector(
                       onTap: () {
                         

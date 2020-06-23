@@ -61,7 +61,7 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("E-Groc",
+        title: Text("Daily Kirana",
         style:GoogleFonts.piedra()),
         elevation: 0.0,
         centerTitle: false,
