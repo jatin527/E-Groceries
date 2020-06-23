@@ -61,7 +61,7 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("E-Groc", style: GoogleFonts.piedra()),
+        title: Text("Daily Kirana", style: GoogleFonts.piedra()),
         elevation: 0.0,
         centerTitle: false,
         actions: [
@@ -81,7 +81,7 @@ class _ChatRoomState extends State<ChatRoom> {
         child: chatRoomsList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.search), 
+        child: Icon(Icons.search),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Search()));

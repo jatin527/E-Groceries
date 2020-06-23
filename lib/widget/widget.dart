@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 Widget appBarMain(BuildContext context) {
   return AppBar(
     title: (Text(
-      "E-Groc",
+      "Daily Kirana",
       style: GoogleFonts.piedra(),
     )),
   );

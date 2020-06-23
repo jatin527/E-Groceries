@@ -19,12 +19,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   forgetpass() async {
-    if (formKey.currentState.validate()) {
-      setState(() {
-        isLoading = true;
-      });
+    
       await authService.resetPass(useremailEditingController.text);
-    }
+    
   }
 
   @override
@@ -45,7 +42,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: useremailEditingController,
-                      validator: (val) {
+                      validator: (val){
                         if (!EmailValidator.validate(val)) {
                           return 'Please enter a valid email';
                         } else {
@@ -66,17 +63,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               Text(
                                 "Mail Sent. Please Check your inbox",
                                 style: simpleTextStyle(),
-                                textAlign: TextAlign.center,
                               )
                             ],
                           )
                         : new Container(),
+                        
+                    SizedBox(
+                      height: 25,
+                    ),
                     GestureDetector(
                       onTap: () {
-                        forgetpass();
-                        setState(() {
-                          visible = true;
-                        });
+                        
+                          forgetpass();
+                          setState(() {
+                            visible = true;
+                          });
+                        
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -90,7 +92,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             )),
                         width: MediaQuery.of(context).size.width,
                         child: Text(
-                          "Reset Password",
+                          "Send Password Reset Mail",
                           style: biggerTextStyle(),
                           textAlign: TextAlign.center,
                         ),
