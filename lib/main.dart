@@ -14,7 +14,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   bool userIsLoggedIn;
 
   @override
@@ -24,9 +23,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   getLoggedInState() async {
-    await HelperFunctions.getUserLoggedInSharedPreference().then((value){
+    await HelperFunctions.getUserLoggedInSharedPreference().then((value) {
       setState(() {
-        userIsLoggedIn  = value;
+        userIsLoggedIn = value;
       });
     });
   }
@@ -42,12 +41,13 @@ class _MyAppState extends State<MyApp> {
         accentColor: Color(0xff007EF4),
         fontFamily: "OverpassRegular",
       ),
-      home: userIsLoggedIn != null ?  userIsLoggedIn ? ChatRoom() : Authenticate()
+      home: userIsLoggedIn != null
+          ? userIsLoggedIn ? ChatRoom() : Authenticate()
           : Container(
-        child: Center(
-          child: Authenticate(),
-        ),
-      ),
+              child: Center(
+                child: Authenticate(),
+              ),
+            ),
     );
   }
 }

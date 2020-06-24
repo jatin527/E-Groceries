@@ -81,11 +81,9 @@ class _SearchState extends State<Search> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Text(
                 userName,
                 style: GoogleFonts.heebo(fontSize: 14, color: Colors.black),
-
               ),
               Text(
                 userAddress,
@@ -107,7 +105,7 @@ class _SearchState extends State<Search> {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(24)),
               child: Text(
-                "Message",
+                "Order Here",
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
@@ -170,10 +168,7 @@ class _SearchState extends State<Search> {
                               width: 40,
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
-                                      colors: [
-                                        Colors.blue,
-                                        Colors.blue[300]
-                                      ],
+                                      colors: [Colors.blue, Colors.blue[300]],
                                       begin: FractionalOffset.topLeft,
                                       end: FractionalOffset.bottomRight),
                                   borderRadius: BorderRadius.circular(40)),

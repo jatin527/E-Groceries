@@ -25,8 +25,30 @@ class _SignInState extends State<SignIn> {
   AuthService authService = new AuthService();
 
   final formKey = GlobalKey<FormState>();
+  QuerySnapshot emailsnap;
+  bool visible = false;
 
   bool isLoading = false;
+
+  checkEmail() async {
+    Firestore.instance
+        .collection("users")
+        .where('userEmail', isEqualTo: emailEditingController.text)
+        .getDocuments()
+        .then((snapshot) async {
+      emailsnap = snapshot;
+      print(emailsnap.documents.length);
+      if (emailsnap.documents.length == 0) {
+        setState(() {
+          visible = true;
+        });
+      } else {
+        setState(() {
+          visible = false;
+        });
+      }
+    });
+  }
 
   signIn() async {
     if (formKey.currentState.validate()) {
@@ -53,7 +75,6 @@ class _SignInState extends State<SignIn> {
         } else {
           setState(() {
             isLoading = false;
-          
           });
         }
       });
@@ -80,7 +101,9 @@ class _SignInState extends State<SignIn> {
                       height: 200,
                       width: 200,
                     ),
-                    SizedBox(height: 50,),
+                    SizedBox(
+                      height: 50,
+                    ),
                     TextFormField(
                       style: simpleTextStyle(),
                       controller: emailEditingController,
@@ -90,6 +113,10 @@ class _SignInState extends State<SignIn> {
                       validator: (val) {
                         if (!EmailValidator.validate(val)) {
                           return 'Please enter a valid email';
+                        } else {
+                          if (visible) {
+                            return 'Please Register Yourself';
+                          }
                         }
                       },
                     ),
@@ -108,7 +135,6 @@ class _SignInState extends State<SignIn> {
                             : null;
                       },
                     ),
-
                     SizedBox(
                       height: 15,
                     ),
@@ -137,6 +163,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        checkEmail();
                         signIn();
                       },
                       child: Container(

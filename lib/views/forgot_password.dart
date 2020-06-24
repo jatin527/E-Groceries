@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_grocery/services/auth.dart';
-import 'package:e_grocery/services/database.dart';
 import 'package:e_grocery/widget/widget.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   QuerySnapshot emailsnap;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
 
   forgetpass(email) async {
     if (formKey.currentState.validate()) {

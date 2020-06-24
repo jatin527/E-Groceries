@@ -255,7 +255,7 @@ class MessageTile extends StatelessWidget {
           gradient: LinearGradient(
             colors: sendByMe
                 ? [const Color(0xff2A75BC), const Color(0xff2A75BC)]
-                : [const Color(0xff1dcfad),const Color(0xff1dcfad) ],
+                : [const Color(0xff1dcfad), const Color(0xff1dcfad)],
           ),
         ),
         child: Text(
